@@ -1,5 +1,7 @@
+package tn.esprit.gestionzoo.main;
 
-import java.util.Scanner;
+import tn.esprit.gestionzoo.entities.Animal;
+import tn.esprit.gestionzoo.entities.Zoo;
 
 class ZooManagement {
 
@@ -33,7 +35,7 @@ class ZooManagement {
         // Compare the two zoos and find the one with the most animals
         Zoo biggerZoo = Zoo.comparerZoo(zoo1, zoo2);
         if (biggerZoo != null) {
-            System.out.println("\nLe zoo avec le plus d'animaux est : " + biggerZoo.name);
+            System.out.println("\nLe zoo avec le plus d'animaux est : " + biggerZoo.getName());
         }
 
         // Display the animals in zoo1
@@ -62,6 +64,6 @@ class ZooManagement {
         System.out.println("\n--- Animaux après suppression ---");
         zoo1.displayAnimalsInZoo();
 
-        
+
 
     }}

@@ -1,11 +1,14 @@
+package tn.esprit.gestionzoo.entities;
+
 import java.util.Arrays;
 
 public class Zoo {
-    public Animal[] animals;
-    public String name;
-    public String city;
-    private final int nbrCages=25;
+    private Animal[] animals;
+    private String name;
+    private String city;
+    private final int nbrCages = 25; // Max 25 animals
     private int nbrAnimals;
+
 
     public Zoo(String name, String city) {
         this.name = name;
@@ -13,24 +16,44 @@ public class Zoo {
         this.animals = new Animal[nbrCages];
         this.nbrAnimals = 0;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     // Méthode pour ajouter un animal dans le zoo
     public boolean addAnimal(Animal animal) {
+        // Check if the zoo is full before adding the animal
+        if (isZooFull()) {
+            System.out.println("Le zoo est plein, impossible d'ajouter l'animal : " + animal.getName());
+            return false;
+        }
+
+        // Check if the animal already exists in the zoo
         if (searchAnimal(animal) != -1) {
             System.out.println("L'animal " + animal.getName() + " est déjà dans le zoo.");
             return false;
         }
 
-        // Vérifier s'il reste de la place dans le zoo
-        if (nbrAnimals < nbrCages) {
-            animals[nbrAnimals] = animal;
-            nbrAnimals++;
-            System.out.println("L'animal " + animal.getName() + " a été ajouté.");
-            return true;
-        } else {
-            System.out.println("Le zoo est plein, impossible d'ajouter l'animal : " + animal.getName());
-            return false;
-        }
+        // Add the animal to the zoo
+        animals[nbrAnimals] = animal;
+        nbrAnimals++;
+        System.out.println("L'animal " + animal.getName() + " a été ajouté.");
+        return true;
     }
+
     // Méthode pour afficher les informations du zoo
     public void displayZoo() {
         System.out.println("Nom du zoo: " + name + ", Ville: " + city + ", Nombre de cages: " + nbrCages);
