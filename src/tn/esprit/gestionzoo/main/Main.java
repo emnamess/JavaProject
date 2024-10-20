@@ -1,7 +1,6 @@
 package tn.esprit.gestionzoo.main;
 
-import tn.esprit.gestionzoo.entities.Animal;
-import tn.esprit.gestionzoo.entities.Zoo;
+import tn.esprit.gestionzoo.entities.*;
 
 class ZooManagement {
 
@@ -13,56 +12,31 @@ class ZooManagement {
         Zoo zoo1 = new Zoo("Zoo 1", "City A");
         Zoo zoo2 = new Zoo("Zoo 2", "City B");
 
-        Animal lion = new Animal("Felidae", "Simba", 5, true);
-        Animal tiger = new Animal("Felidae", "Sheru", 4, true);
-        Animal elephant = new Animal("Elephantidae", "Dumbo", 10, true);
-        Animal giraffe = new Animal("Giraffidae", "Melman", 8, true);
+        Aquatic whale = new Aquatic("Cetacea", "Blue Whale", 30, true, "Ocean");
+        Terrestrial elephant = new Terrestrial("Elephantidae", "Dumbo", 10, true, 4);
 
-        // Add animals to the first zoo
-        zoo1.addAnimal(lion);
-        zoo1.addAnimal(tiger);
+        // Create specific animals
+        Dolphin dolphin= new Dolphin("Delphinidae", "Flipper", 7, true, "Sea", 35.6f);
+        Penguin penguin = new Penguin("Spheniscidae", "Pingu", 3, true, "Antarctica", 150.0f);
+        System.out.println(dolphin.toString());
+        System.out.println(penguin.toString());
+        // Call the swim method for Aquatic, Dolphin, and Penguin
+        whale.swim();
+        dolphin.swim();
+        penguin.swim();
 
-        // Add animals to the second zoo
-        zoo2.addAnimal(elephant);
-        zoo2.addAnimal(giraffe);
-        zoo2.addAnimal(lion);
+        zoo1.addAnimal(elephant);  // Adding a Terrestrial animal
+        zoo2.addAnimal(whale);     // Adding an Aquatic animal
+        zoo2.addAnimal(dolphin);   // Adding a specific Aquatic animal
+        zoo2.addAnimal(penguin);   // Adding another specific Aquatic animal
 
 
-        // Check if the zoo is full
-        System.out.println("\nLe zoo 1 est plein : " + zoo1.isZooFull());
-        System.out.println("Le zoo 2 est plein : " + zoo2.isZooFull());
-
-        // Compare the two zoos and find the one with the most animals
-        Zoo biggerZoo = Zoo.comparerZoo(zoo1, zoo2);
-        if (biggerZoo != null) {
-            System.out.println("\nLe zoo avec le plus d'animaux est : " + biggerZoo.getName());
-        }
-
-        // Display the animals in zoo1
+        // Display animals in each zoo
         System.out.println("\n--- Animaux dans le zoo 1 ---");
         zoo1.displayAnimalsInZoo();
 
-        // Display the animals in zoo2
         System.out.println("\n--- Animaux dans le zoo 2 ---");
         zoo2.displayAnimalsInZoo();
-
-
-        // Recherche d'un animal par son nom
-        System.out.println("\n--- Recherche de Simba dans le zoo ---");
-        int index = zoo1.searchAnimal(lion);
-        if (index != -1) {
-            System.out.println("Simba trouvé à l'indice: " + index);
-        } else {
-            System.out.println("Simba n'a pas été trouvé.");
-        }
-
-        // Supprimer un animal
-        System.out.println("\n--- Suppression de Simba ---");
-        zoo1.removeAnimal(lion);
-
-        // Afficher les animaux après la suppression
-        System.out.println("\n--- Animaux après suppression ---");
-        zoo1.displayAnimalsInZoo();
 
 
 
