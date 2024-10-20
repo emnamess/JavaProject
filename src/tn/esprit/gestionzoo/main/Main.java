@@ -17,18 +17,25 @@ class ZooManagement {
 
         // Create specific animals
         Dolphin dolphin= new Dolphin("Delphinidae", "Flipper", 7, true, "Sea", 35.6f);
+        Dolphin dolphin2= new Dolphin("Delphinidae", "Flipper", 7, true, "Sea", 35.6f);
+
         Penguin penguin = new Penguin("Spheniscidae", "Pingu", 3, true, "Antarctica", 150.0f);
         System.out.println(dolphin.toString());
         System.out.println(penguin.toString());
-        // Call the swim method for Aquatic, Dolphin, and Penguin
-        whale.swim();
-        dolphin.swim();
-        penguin.swim();
 
-        zoo1.addAnimal(elephant);  // Adding a Terrestrial animal
-        zoo2.addAnimal(whale);     // Adding an Aquatic animal
-        zoo2.addAnimal(dolphin);   // Adding a specific Aquatic animal
-        zoo2.addAnimal(penguin);   // Adding another specific Aquatic animal
+        System.out.println(dolphin.equals(dolphin2)); // true
+
+
+
+
+
+
+
+
+        zoo1.addAnimal(elephant);
+        zoo2.addAquaticAnimal(whale);
+        zoo2.addAquaticAnimal(dolphin);
+        zoo2.addAquaticAnimal(penguin);
 
 
         // Display animals in each zoo
@@ -36,7 +43,10 @@ class ZooManagement {
         zoo1.displayAnimalsInZoo();
 
         System.out.println("\n--- Animaux dans le zoo 2 ---");
-        zoo2.displayAnimalsInZoo();
+        zoo2.displayAquaticAnimals();
+        zoo2.displayNumberOfAquaticsByType();
+        System.out.println("Profondeur maximale de nage des pingouins: " + zoo1.maxPenguinSwimmingDepth());
+        zoo2.displayAquaticSwimActions();
 
 
 
